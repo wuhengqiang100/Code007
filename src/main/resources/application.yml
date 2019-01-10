@@ -1,0 +1,22 @@
+server:
+  port: 80
+  context-path: /
+  tomcat:
+    uri-encoding: UTF-8
+
+# 数据源配置
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/code007
+    username: root
+    password: 123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  # 一项是非严格的HTML检查，一项是禁用缓存来获取实时页面数据，其他采用默认项即可
+  thymeleaf:
+    cache: false
