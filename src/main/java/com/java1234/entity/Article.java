@@ -38,7 +38,7 @@ public class Article {
 
     private Integer points;//评分
 
-    private boolean isHot=false;//是否是热门资源true 是
+    private boolean isHot=false;//是否是热门资源true 是,false 不是,默认 不是
 
     private Integer state;//审核状态 1 未审核 2审核通过 3审核不通过
 
