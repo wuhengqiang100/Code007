@@ -6,7 +6,6 @@ import com.java1234.util.CryptographyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -39,7 +38,14 @@ public class UserController {
         if(bindingResult.hasErrors()){
             map.put("success",false);
             map.put("errorInfo",bindingResult.getFieldError().getDefaultMessage());
-        }else{
+        }else if(userService.findByUserName(user.getUserName())!=null){
+            map.put("success",false);
+            map.put("errorInfo","用户名已存在,请更换");
+        }else if(userService.findByEmail(user.getEmail())!=null){
+            map.put("success",false);
+            map.put("errorInfo","邮箱已使用,请更换");
+        }
+        else{
             user.setPassword(CryptographyUtil.md5(user.getPassword(),CryptographyUtil.SALT));
             user.setRegisterDate(new Date());
             user.setImageName("default.jpg");

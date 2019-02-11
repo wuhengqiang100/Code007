@@ -19,4 +19,18 @@ public interface UserService {
      * @param user
      */
     public void save(User user);
+
+    /**
+     * 根据用户名查找实体
+     * @param userName
+     * @return
+     */
+    public User findByUserName(String userName);
+
+    /**
+     * 根据邮箱查找用户实体
+     * @param email
+     * @return
+     */
+    public User findByEmail(String email);
 }
